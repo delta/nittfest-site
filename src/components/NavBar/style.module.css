@@ -1,0 +1,20 @@
+.orange {
+  color: #f58719;
+  border-color: #f58719;
+}
+
+.orange:hover {
+  background-color: #f58719;
+  border-color: #f58719;
+}
+
+.linked {
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.linked:hover {
+  color: #f58719 !important;
+}

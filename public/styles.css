@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+@font-face {
+  font-family: "Riffic Free";
+  src: url("RifficFree-Bold.tff");
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +13,33 @@ body {
   animation: fadein 3s;
   overflow-x: hidden;
   user-select: none;
+  color: #fff;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Riffic Free", cursive;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 12px;
+  }
 }
 
 @keyframes fadein {
@@ -49,11 +83,11 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #50aceeaa;
+    background: #f58719;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #50aceedd;
+    background: #f58719;
   }
 }
