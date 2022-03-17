@@ -4,15 +4,8 @@ body {
   border: 0;
   background: #000;
   animation: fadein 3s;
-  animation: fadein 3s;
-  animation: fadein 3s;
   overflow-x: hidden;
-
-  /* -youbkit-touch-callout: none;
-  -youbkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; */
+  user-select: none;
 }
 
 @keyframes fadein {
@@ -32,8 +25,6 @@ body {
 
   to {
     opacity: 1;
-
-    /* stransform: scale(1); */
   }
 }
 
