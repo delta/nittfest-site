@@ -1,11 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
-
-@font-face {
-  font-family: "Riffic Free";
-  src: url("RifficFree-Bold.tff");
-}
-
-body {
+body,
+#root {
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,22 +8,8 @@ body {
   overflow-x: hidden;
   user-select: none;
   color: #fff;
-}
 
-* {
-  font-family: "Open Sans", sans-serif;
-}
-
-h1 {
-  font-family: "Riffic Free", cursive;
-  font-weight: 700;
-  font-size: 50px;
-  line-height: 1.2;
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.2;
+  /* cursor: none !important; */
 }
 
 @media screen and (max-width: 768px) {
@@ -90,4 +70,26 @@ p {
   ::-webkit-scrollbar-thumb:hover {
     background: #f58719;
   }
+}
+
+.cursor {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 200ms ease-out;
+  position: fixed;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  transform: translate(calc(-50% + 15px), -50%);
+}
+
+#lollipop {
+  border-radius: 50%;
+}
+
+#stick {
+  position: absolute;
+  transform: translate(-50%, 50%);
+  z-index: -1;
 }

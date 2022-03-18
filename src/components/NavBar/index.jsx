@@ -11,20 +11,12 @@ const routes = [
     url: '/'
   },
   {
-    name: 'About',
-    url: '/about'
-  },
-  {
     name: 'Events',
     url: '/events'
   },
   {
-    name: 'Leaderboad',
+    name: 'Leaderboard',
     url: '/leaderboard'
-  },
-  {
-    name: 'Sponsors',
-    url: '/sponsors'
   },
   {
     name: 'Team',

@@ -1,0 +1,96 @@
+.footer {
+  height: fit-content !important;
+  text-align: center;
+  color: #eee;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  font-size: 23px;
+  font-family: Montserrat, Raleway, sans-serif;
+  z-index: 20;
+}
+
+.footer-content {
+  margin-top: 5px;
+}
+
+.atag {
+  text-decoration: none;
+  color: lime;
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    font-size: 13px;
+  }
+}
+
+.heart {
+  display: inline-block;
+  color: red;
+  animation: animate-heart 1.2s infinite;
+}
+
+@keyframes animate-heart {
+  0% {
+    transform: scale(0.8);
+  }
+
+  5% {
+    transform: scale(0.9);
+  }
+
+  10% {
+    transform: scale(0.8);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.icon-3d {
+  padding: 10px;
+  animation: icon3d 200ms 10;
+  color: #fff;
+  font-size: 30px;
+}
+
+.icon-3d:hover {
+  animation: icon3d 200ms infinite;
+}
+
+@keyframes icon3d {
+  0% {
+    text-shadow: 5px 4px rgb(244 67 54 / 100%), -5px -6px rgb(33 150 243 / 100%);
+  }
+
+  25% {
+    text-shadow: -5px -6px rgb(244 67 54 / 100%), 5px 4px rgb(33 150 243 / 100%);
+  }
+
+  50% {
+    text-shadow: 5px -4px rgb(244 67 54 / 100%), -8px 4px rgb(33 150 243 / 100%);
+  }
+
+  75% {
+    text-shadow:
+      -8px -4px rgb(244 67 54 / 100%),
+      -5px -4px rgb(33 150 243 / 100%);
+  }
+
+  100% {
+    text-shadow: -5px 0 rgb(244 67 54 / 100%), 5px -4px rgb(33 150 243 / 100%);
+  }
+}
