@@ -25,7 +25,18 @@ export function Adminpage() {
           Admin Page
         </h1>
         <p>Events Clusters</p>
-        {isLoading ? <div>Loading</div> : <div>{console.log(clusters)}</div>}
+        {isLoading ? (
+          <div>Loading</div>
+        ) : (
+          <div>
+            {clusters
+              && clusters.map((cluster) => (
+                <div key={cluster.cluster}>
+                  <div>{`Cluster name : ${cluster.cluster}`}</div>
+                </div>
+              ))}
+          </div>
+        )}
       </div>
     </Container>
   );
