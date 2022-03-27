@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Accordion } from 'react-bootstrap';
 
 export function Adminpage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,16 +24,16 @@ export function Adminpage() {
         <h1 className="mb-4" style={{ color: '#6AE1DD' }}>
           Admin Page
         </h1>
-        <p>Events Clusters</p>
         {isLoading ? (
           <div>Loading</div>
         ) : (
           <div>
             {clusters
               && clusters.map((cluster) => (
-                <div key={cluster.cluster}>
-                  <div>{`Cluster name : ${cluster.cluster}`}</div>
-                </div>
+                <Accordion>
+                  <Accordion.Header className="mb-4">{`Cluster name : ${cluster.cluster}`}</Accordion.Header>
+                  <Accordion.Body>Hello</Accordion.Body>
+                </Accordion>
               ))}
           </div>
         )}
