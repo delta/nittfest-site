@@ -9,9 +9,23 @@ export function Adminpage() {
   const [isLoading, setIsLoading] = useState(true);
   const [clusters, setClusters] = useState([]);
   const [show, setShow] = useState(false);
+  const [eventData, setEventData] = useState({});
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (event) => {
+    const tmpEventData = {
+      eventName: event.name,
+      is_reg_completed: event.is_reg_completed,
+      is_event_completed: event.is_event_completed,
+      rules: event.rules,
+      description: event.description,
+      form_link: event.form_link,
+      event_link: event.event_link,
+      image_link: event.image_link
+    };
+    setEventData(tmpEventData);
+    setShow(true);
+  };
 
   const fetchData = () => {
     fetch('http://localhost:10000/events/')
@@ -34,10 +48,10 @@ export function Adminpage() {
         </h1>
         <Modal className={styles.form} show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Update Event</Modal.Title>
+            <Modal.Title>{`Update Event : ${eventData.eventName}`}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <UpdateForm />
+            <UpdateForm eventData={eventData} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -71,7 +85,12 @@ export function Adminpage() {
                                 {`Event name : ${event.name}`}
                               </Accordion.Header>
                               <Accordion.Body className={styles.title_text}>
-                                <Button variant="primary" onClick={handleShow}>
+                                <Button
+                                  variant="primary"
+                                  onClick={() => {
+                                    handleShow(event);
+                                  }}
+                                >
                                   Update the event
                                 </Button>
                               </Accordion.Body>
