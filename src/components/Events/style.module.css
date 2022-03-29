@@ -23,12 +23,13 @@
   width: 100%;
   background-color: #262626;
   max-width: 400px;
-  height: 250px;
+  height: 275px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 2rem;
+  padding-top: 1rem;
   margin: 1rem;
 }
 
@@ -67,6 +68,13 @@
   color: #f6396f;
 }
 
+.event-card-image {
+  height: 30px;
+  width: auto;
+  margin: 10px;
+  filter: invert(0.9);
+}
+
 .event-card-name {
   font-size: 2rem;
 }
@@ -75,7 +83,8 @@
   font-size: 1.2rem;
   font-family: "Riffic Free", sans-serif;
   margin-top: auto;
-  max-height: 75px;
+  max-height: 70px;
+  overflow-y: auto;
   height: 100%;
   text-overflow: ellipsis;
 }

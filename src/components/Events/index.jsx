@@ -17,6 +17,24 @@ export function Events() {
     });
   }, []);
 
+  const getEventIconLink = (event) => {
+    let iconLink = '';
+    if (event.name.split(' ')[0] === 'Vocals') {
+      iconLink = `icons/${displayedCluster.cluster}/Vocals.png`;
+    } else if (event.name.split(' ')[0] === 'Instrumentals') {
+      iconLink = `icons/${displayedCluster.cluster}/Instrumentals.png`;
+    } else if (event.name.split(' ')[0] === 'Choreonite') {
+      iconLink = `icons/${displayedCluster.cluster}/Choreonite.png`;
+    } else if (event.name.split(' ')[0] === 'Just,') {
+      iconLink = `icons/${displayedCluster.cluster}/Just.png`;
+    } else if (event.name.split(' ')[0] === 'WAR') {
+      iconLink = `icons/${displayedCluster.cluster}/SCRABBLE.png`;
+    } else {
+      iconLink = `icons/${displayedCluster.cluster}/${event.name}.png`;
+    }
+    return iconLink;
+  };
+
   return (
     <div className={styles['events-page']}>
       <div className={styles['header-section']}>
@@ -51,6 +69,11 @@ export function Events() {
           displayedCluster.events.map((event) => (
             <div className={styles['event-card']}>
               <div className={styles['event-card-header']}>
+                <img
+                  className={styles['event-card-image']}
+                  src={getEventIconLink(event)}
+                  alt={event.name}
+                />
                 <h1 className={styles['event-card-name']}>{event.name}</h1>
                 <p className={styles['event-card-description']}>
                   {event.description}
