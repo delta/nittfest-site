@@ -1,26 +1,27 @@
-var cursor = document.querySelector(".cursor");
+var cursor = document.querySelector('.cursor');
 
-document.addEventListener("mousemove", function (e) {
+document.addEventListener('mousemove', function (e) {
+  if (!cursor) return;
   var x = e.clientX;
   var y = e.clientY;
   cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
 });
 
 const size = 25;
-const lollipop = document.getElementById("lollipop");
-const stick = document.getElementById("stick");
+const lollipop = document.getElementById('lollipop');
+const stick = document.getElementById('stick');
 lollipop.width = size;
 lollipop.height = size;
 stick.width = size;
 stick.height = size;
-const ctx = lollipop.getContext("2d");
-const stickCtx = stick.getContext("2d");
+const ctx = lollipop.getContext('2d');
+const stickCtx = stick.getContext('2d');
 ctx.translate(size / 2, size / 2);
 const { sin, cos, pow, PI, sqrt } = Math;
 
 class Spiral {
   colors =
-    "hsl(0,100%,75%) hsl(60,100%,75%) hsl(120,100%,75%) hsl(180,100%,75%) hsl(240,100%,75%) hsl(300,100%,75%)";
+    'hsl(0,100%,75%) hsl(60,100%,75%) hsl(120,100%,75%) hsl(180,100%,75%) hsl(240,100%,75%) hsl(300,100%,75%)';
 
   constructor() {
     this.setup();
@@ -35,8 +36,8 @@ class Spiral {
     this.n = this._colors.length;
     this.t = 0;
     this.R = size / 2 / (this.q - 1) / pow(k, this.n);
-    ctx.strokeStyle = "white";
-    stickCtx.strokeStyle = "#f58719";
+    ctx.strokeStyle = 'white';
+    stickCtx.strokeStyle = '#f58719';
     stickCtx.lineWidth = 5;
   };
   draw = () => {
