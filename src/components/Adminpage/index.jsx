@@ -14,7 +14,7 @@ export function Adminpage() {
   const handleClose = () => setShow(false);
   const handleShow = (event) => {
     const tmpEventData = {
-      eventName: event.name,
+      name: event.name,
       is_reg_completed: event.is_reg_completed,
       is_event_completed: event.is_event_completed,
       rules: event.rules,
@@ -22,6 +22,8 @@ export function Adminpage() {
       form_link: event.form_link,
       event_link: event.event_link,
       image_link: event.image_link,
+      start_time: event.start_time,
+      end_time: event.end_time,
       points: event.points
     };
     setEventData(tmpEventData);
@@ -49,19 +51,11 @@ export function Adminpage() {
         </h1>
         <Modal className={styles.form} show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{`Update Event : ${eventData.eventName}`}</Modal.Title>
+            <Modal.Title>Update Event</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <UpdateForm eventData={eventData} />
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Update Event
-            </Button>
-          </Modal.Footer>
         </Modal>
         {isLoading ? (
           <div>Loading</div>

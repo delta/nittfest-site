@@ -9,8 +9,22 @@ import PropTypes from 'prop-types';
 export function UpdateForm(props) {
   const { eventData } = props;
   const [eventFinalData, setEventFinalData] = useState(eventData);
+  const [depName, setDepName] = useState([]);
+
+  const fetchDepartmentData = () => {
+    fetch('http://localhost:10000/department/')
+      // TODO change url to server
+      .then((res) => res.json())
+      .then((data) => {
+        setDepName(data.departments.map((dept) => dept.name));
+      });
+  };
+  useEffect(() => {
+    fetchDepartmentData();
+  }, []);
 
   const handleSubmit = () => {
+    console.log(eventFinalData);
     // send the post rqst
   };
 
@@ -120,7 +134,7 @@ export function UpdateForm(props) {
             onChange={(event) => {
               setEventFinalData({
                 ...eventFinalData,
-                start_time: event.data
+                start_time: event.toDate()
               });
             }}
           />
@@ -128,10 +142,11 @@ export function UpdateForm(props) {
         <Form.Group as={Col} className="mb-3" id="formGridEndTime">
           <Form.Label>End Time</Form.Label>
           <Datetime
+            value={eventFinalData.end_time}
             onChange={(event) => {
               setEventFinalData({
                 ...eventFinalData,
-                end_time: event.date
+                end_time: event.toDate()
               });
             }}
           />
@@ -143,22 +158,35 @@ export function UpdateForm(props) {
           <Form.Label>Position</Form.Label>
           <Form.Select defaultValue="1">
             <option>1</option>
-            <option>2</option>
-            <option>3</option>
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridDepartment">
-          <Form.Label>Departments</Form.Label>
+          <Form.Label>Department</Form.Label>
           <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
+            {depName.map((name) => (
+              <option>{name}</option>
+            ))}
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPoint">
           <Form.Label>Point</Form.Label>
-          <Form.Control />
+          <Form.Control
+            value={eventFinalData.points[0].point}
+            onChange={(event) => {
+              setEventFinalData({
+                ...eventFinalData,
+                points: {
+                  ...eventFinalData.points,
+                  0: {
+                    ...eventFinalData.points[0],
+                    point: event.target.value
+                  }
+                }
+              });
+            }}
+          />
         </Form.Group>
       </Row>
 
@@ -166,23 +194,36 @@ export function UpdateForm(props) {
         <Form.Group as={Col} controlId="formGridPosition">
           <Form.Label>Position</Form.Label>
           <Form.Select defaultValue="2">
-            <option>1</option>
             <option>2</option>
-            <option>3</option>
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridDepartment">
           <Form.Label>Departments</Form.Label>
           <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
+            {depName.map((name) => (
+              <option>{name}</option>
+            ))}
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPoint">
           <Form.Label>Point</Form.Label>
-          <Form.Control />
+          <Form.Control
+            value={eventFinalData.points[1].point}
+            onChange={(event) => {
+              setEventFinalData({
+                ...eventFinalData,
+                points: {
+                  ...eventFinalData.points,
+                  1: {
+                    ...eventFinalData.points[1],
+                    point: event.target.value
+                  }
+                }
+              });
+            }}
+          />
         </Form.Group>
       </Row>
 
@@ -190,60 +231,63 @@ export function UpdateForm(props) {
         <Form.Group as={Col} controlId="formGridPosition">
           <Form.Label>Position</Form.Label>
           <Form.Select defaultValue="3">
-            <option>1</option>
-            <option>2</option>
             <option>3</option>
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridDepartment">
-          <Form.Label>Departments</Form.Label>
+          <Form.Label>Department</Form.Label>
           <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
+            {depName.map((name) => (
+              <option>{name}</option>
+            ))}
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPoint">
           <Form.Label>Point</Form.Label>
-          <Form.Control />
+          <Form.Control
+            value={eventFinalData.points[2].point}
+            onChange={(event) => {
+              setEventFinalData({
+                ...eventFinalData,
+                points: {
+                  ...eventFinalData.points,
+                  2: {
+                    ...eventFinalData.points[2],
+                    point: event.target.value
+                  }
+                }
+              });
+            }}
+          />
         </Form.Group>
       </Row>
 
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+      <Button variant="primary" onClick={handleSubmit}>
+        {`Update ${eventFinalData.name} Event`}
       </Button>
     </Form>
   );
 }
 UpdateForm.propTypes = {
   eventData: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    is_reg_completed: PropTypes.bool.isRequired,
-    is_event_completed: PropTypes.bool.isRequired,
-    rules: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    form_link: PropTypes.string.isRequired,
-    event_link: PropTypes.string.isRequired,
-    image_link: PropTypes.string.isRequired,
-    start_time: PropTypes.string.isRequired,
-    end_time: PropTypes.string.isRequired,
-    points: PropTypes.shape({
-      one: PropTypes.shape({
-        point: PropTypes.number.isRequired,
-        position: PropTypes.number.isRequired,
-        department: PropTypes.string.isRequired
-      }).isRequired,
-      two: PropTypes.shape({
-        point: PropTypes.number.isRequired,
-        position: PropTypes.number.isRequired,
-        department: PropTypes.string.isRequired
-      }).isRequired,
-      three: PropTypes.shape({
-        point: PropTypes.number.isRequired,
-        position: PropTypes.number.isRequired,
-        department: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
+    name: PropTypes.string,
+    is_reg_completed: PropTypes.bool,
+    is_event_completed: PropTypes.bool,
+    rules: PropTypes.string,
+    description: PropTypes.string,
+    form_link: PropTypes.string,
+    event_link: PropTypes.string,
+    image_link: PropTypes.string,
+    start_time: PropTypes.string,
+    end_time: PropTypes.string,
+    points: PropTypes.arrayOf(
+      PropTypes.shape({
+        point: PropTypes.number,
+        position: PropTypes.number,
+        department: PropTypes.string
+      })
+    )
   }).isRequired
 };
