@@ -24,8 +24,18 @@ export function UpdateForm(props) {
   }, []);
 
   const handleSubmit = () => {
-    console.log(eventFinalData);
-    // send the post rqst
+    // Add authentication headers
+    fetch(`${backendUrl}events/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(eventFinalData)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   useEffect(() => {}, [eventFinalData]);
