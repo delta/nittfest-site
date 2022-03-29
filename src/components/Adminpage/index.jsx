@@ -21,7 +21,8 @@ export function Adminpage() {
       description: event.description,
       form_link: event.form_link,
       event_link: event.event_link,
-      image_link: event.image_link
+      image_link: event.image_link,
+      points: event.points
     };
     setEventData(tmpEventData);
     setShow(true);
