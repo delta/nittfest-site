@@ -6,6 +6,7 @@ import styles from './admin.module.css';
 import { UpdateForm } from './UpdateForm';
 
 export function Adminpage() {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const [isLoading, setIsLoading] = useState(true);
   const [clusters, setClusters] = useState([]);
   const [show, setShow] = useState(false);
@@ -31,8 +32,7 @@ export function Adminpage() {
   };
 
   const fetchData = () => {
-    fetch('http://localhost:10000/events/')
-      // TODO change url to server
+    fetch(`${backendUrl}events/`)
       .then((res) => res.json())
       .then((data) => {
         setClusters(data);

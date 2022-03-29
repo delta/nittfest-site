@@ -7,13 +7,13 @@ import {
 import PropTypes from 'prop-types';
 
 export function UpdateForm(props) {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const { eventData } = props;
   const [eventFinalData, setEventFinalData] = useState(eventData);
   const [depName, setDepName] = useState([]);
 
   const fetchDepartmentData = () => {
-    fetch('http://localhost:10000/department/')
-      // TODO change url to server
+    fetch(`${backendUrl}department/`)
       .then((res) => res.json())
       .then((data) => {
         setDepName(data.departments.map((dept) => dept.name));
