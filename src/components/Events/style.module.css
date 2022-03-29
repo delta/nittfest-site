@@ -1,0 +1,86 @@
+.events-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.header-section {
+  width: 100%;
+  max-width: 25%;
+  padding: 4rem;
+}
+
+.events-section {
+  width: 100%;
+  max-width: 75%;
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.event-card {
+  width: 100%;
+  background-color: #262626;
+  max-width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.event-titles {
+  margin-top: 2rem;
+}
+
+.event-title {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  color: #fffe;
+}
+
+.active-event-title {
+  font-weight: 900;
+  color: #fff;
+}
+
+.sub-header-1 {
+  font-family: "Riffic Free", sans-serif;
+  font-size: 1.5rem;
+}
+
+.sub-header-2 {
+  font-size: 1.3rem;
+}
+
+.header-content {
+  font-size: 1.3rem;
+}
+
+.main-header {
+  font-family: "Riffic Free", sans-serif;
+  font-size: 6rem;
+  color: #f6396f;
+}
+
+.event-card-name {
+  font-size: 2rem;
+}
+
+.event-card-description {
+  font-size: 1.2rem;
+  font-family: "Riffic Free", sans-serif;
+  margin-top: auto;
+  max-height: 75px;
+  height: 100%;
+  text-overflow: ellipsis;
+}
+
+.event-card-cluster {
+  font-family: "Riffic Free", sans-serif;
+  color: #f6396f;
+}
