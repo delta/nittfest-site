@@ -10,7 +10,6 @@
 .slide {
   width: 100vw;
   height: 100vh;
-  z-index: 5;
 }
 
 .wrapper {
@@ -20,6 +19,7 @@
   transform: rotate(90deg) translateY(-100vh);
   transform-origin: top left;
   position: absolute;
+  max-width: 800vw;
 }
 
 .one {
@@ -31,7 +31,6 @@
   position: absolute;
   top: 0;
   left: 100vw;
-  z-index: 0;
 }
 
 .three {
@@ -48,6 +47,8 @@
   grid-template-rows: 33vh 33vh 33vh;
   justify-content: space-evenly;
   margin: 1.3rem;
+  position: relative;
+  z-index: inherit;
 }
 
 .event-card {
@@ -84,7 +85,6 @@
   position: absolute;
   top: 0;
   left: 400vw;
-  z-index: 0;
 }
 
 .six {
@@ -108,6 +108,7 @@
 
 .content-wrapper {
   display: flex;
+  z-index: inherit;
 }
 
 .area-left {
@@ -128,10 +129,14 @@
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  z-index: inherit;
 }
 
 .header-container {
   width: 50%;
+  position: relative;
+  z-index: inherit;
+  background-color: #000;
 }
 
 .the-big-show {
@@ -150,32 +155,38 @@
   line-height: 2rem;
   width: 80%;
   margin: none;
+  z-index: inherit;
+  position: relative;
 }
 
 .city {
-  z-index: 0;
+  z-index: -3;
 }
 
 .mountains {
-  z-index: 1;
+  z-index: -2;
 }
 
 .river {
-  z-index: 2;
+  z-index: -1;
 }
 
 .cycle {
-  z-index: 4;
+  z-index: 0;
   position: absolute;
-  top: 40vh;
+  top: 15vh;
+  left: 35vw;
+  translate: translateX();
 }
 
 .event-wrapper {
   margin: 4rem;
 }
 
-.even-header {
+.event-header {
   width: 60%;
+  position: relative;
+  z-index: inherit;
 }
 
 .event-header > h1 {
@@ -203,7 +214,6 @@
   position: absolute;
   top: 0;
   left: 600vw;
-  z-index: 0;
 }
 
 .eight {
@@ -211,6 +221,8 @@
   flex-direction: column;
   justify-content: center;
   font-family: "Open Sans", sans-serif;
+  position: relative;
+  z-index: inherit;
 }
 
 .eight > p {
