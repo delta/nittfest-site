@@ -45,7 +45,7 @@
 }
 
 .event-title:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 .active-event-title {
@@ -54,7 +54,7 @@
 }
 
 .sub-header-1 {
-  font-family: 'Riffic Free', sans-serif;
+  font-family: "Riffic Free", sans-serif;
   font-size: 1.5rem;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .main-header {
-  font-family: 'Riffic Free', sans-serif;
+  font-family: "Riffic Free", sans-serif;
   font-size: 6rem;
   color: #f6396f;
 }
@@ -85,7 +85,7 @@
 
 .event-card-description {
   font-size: 1.2rem;
-  font-family: 'Riffic Free', sans-serif;
+  font-family: "Riffic Free", sans-serif;
   margin-top: auto;
   max-height: 70px;
   overflow-y: auto;
@@ -94,6 +94,6 @@
 }
 
 .event-card-cluster {
-  font-family: 'Riffic Free', sans-serif;
+  font-family: "Riffic Free", sans-serif;
   color: #f6396f;
 }

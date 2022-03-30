@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .header-outer-container {
   display: flex;
   align-items: center;
@@ -11,11 +12,13 @@
   flex-wrap: wrap;
   margin-top: 4rem;
 }
+
 .header-container {
   margin: 2rem;
   width: 100%;
   max-width: 40%;
 }
+
 .image-container {
   width: 100%;
   max-width: 45%;
@@ -23,33 +26,42 @@
   align-items: center;
   text-align: center;
 }
+
 .header {
   font-size: 5rem;
   color: #6ae1dd;
 }
+
 .header-container > p {
   font-size: 1.3rem;
 }
+
 .podium {
   max-width: 70%;
   width: 100%;
   height: auto;
 }
+
 .leader-board-container {
   border: solid 1px blue;
+
   /* display: flex; */
   width: 60vw;
   position: relative;
+
   /* flex-wrap: nowrap; */
 }
+
 .leader-board-container * {
   border: solid 1px green;
 }
 
 .leader-board {
   width: 100%;
+
   /* max-width: 50%; */
 }
+
 .leader-board-header {
   width: 100%;
   background-color: #262626;

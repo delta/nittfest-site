@@ -9,6 +9,7 @@ export function Leaderboard() {
 
   useEffect(() => {
     axios.get(`${BACKEND_URL}/scores/`).then((res) => {
+      // eslint-disable-next-line no-console
       console.log(res.data, leaderBoard);
       setLeaderBoard(res.data);
     });
