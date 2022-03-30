@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export function Login({ setToken }) {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const jwtToken = process.env.REACT_APP_TEST_JWT;
   const [rollno, setRollNo] = useState();
   const [password, setPassword] = useState();
 
@@ -12,7 +13,8 @@ export function Login({ setToken }) {
     return axios
       .post(`${backendUrl}events/`, JSON.stringify(credentials), {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwtToken}`
         }
       })
       .then((response) => {

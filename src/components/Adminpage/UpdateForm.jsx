@@ -9,6 +9,7 @@ import axios from 'axios';
 
 export function UpdateForm(props) {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const jwtToken = process.env.REACT_APP_TEST_JWT;
   const { eventData } = props;
   const [eventFinalData, setEventFinalData] = useState(eventData);
   const [depName, setDepName] = useState([]);
@@ -28,7 +29,8 @@ export function UpdateForm(props) {
     axios
       .post(`${backendUrl}events/`, JSON.stringify(eventFinalData), {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwtToken}`
         }
       })
       .then((response) => {
