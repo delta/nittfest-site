@@ -1,11 +1,59 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BACKEND_URL } from '../../config/config';
 import styles from './style.module.css';
 import podium from './assets/podium.png';
 
+const fakeLeaderBoardData = [
+  {
+    department: 'Lorem Ipsum',
+    points: 115
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 110
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 105
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  },
+  {
+    department: 'Lorem Ipsum',
+    points: 100
+  }
+];
+
 export function Leaderboard() {
-  const [leaderBoard, setLeaderBoard] = useState([]);
+  const [leaderBoard, setLeaderBoard] = useState(fakeLeaderBoardData);
 
   useEffect(() => {
     axios.get(`${BACKEND_URL}/scores/`).then((res) => {
@@ -31,12 +79,55 @@ export function Leaderboard() {
           <img className={styles.podium} src={podium} alt="podium" />
         </div>
       </div>
-      <div className={styles['leader-board-container']}>
-        <div className={styles['leader-board']}>
-          <div className={styles['leader-board-header']}>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
+      <div className={styles['leader-board-wrapper']}>
+        <div className={styles['leader-board-container']}>
+          <div className={styles['leader-board']}>
+            <div className={styles['leader-board-header']}>
+              <div>Place</div>
+              <div>Department</div>
+              <div>Points</div>
+            </div>
+            <div className={styles['leader-board-body']}>
+              {leaderBoard.map((l, i) => {
+                if (i > 5) return;
+                // eslint-disable-next-line consistent-return
+                return (
+                  <div className={styles['leader-board-row']} key={i}>
+                    <div>{i + 1}</div>
+                    <div>
+                      <span className={styles['dept-icon']} />
+                      {l.department}
+                    </div>
+                    <div>{l.points || '105'}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div className={styles['leader-board-container']}>
+          <div className={styles['leader-board']}>
+            <div className={styles['leader-board-header']}>
+              <div>Place</div>
+              <div>Department</div>
+              <div>Points</div>
+            </div>
+            <div className={styles['leader-board-body']}>
+              {leaderBoard.map((l, i) => {
+                if (i < 5) return;
+                // eslint-disable-next-line consistent-return
+                return (
+                  <div className={styles['leader-board-row']} key={i}>
+                    <div>{i + 1}</div>
+                    <div>
+                      <span className={styles['dept-icon']} />
+                      {l.department}
+                    </div>
+                    <div>{l.points || '105'}</div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
