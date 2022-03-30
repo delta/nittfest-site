@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import styles from './admin.module.css';
 import { UpdateForm } from './UpdateForm';
+import { Login } from './Login';
 
 export function Adminpage() {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -57,6 +58,7 @@ export function Adminpage() {
             <UpdateForm eventData={eventData} />
           </Modal.Body>
         </Modal>
+        <Login />
         {isLoading ? (
           <div>Loading</div>
         ) : (
