@@ -1,4 +1,4 @@
-.events-page {
+.team-page {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -10,7 +10,7 @@
   padding: 4rem;
 }
 
-.events-section {
+.team-section {
   width: 100%;
   max-width: 75%;
   padding: 4rem;
@@ -19,7 +19,7 @@
   justify-content: space-around;
 }
 
-.event-card {
+.team-card {
   width: 100%;
   background-color: #262626;
   max-width: 400px;
@@ -33,22 +33,18 @@
   margin: 1rem;
 }
 
-.event-titles {
+.team-titles {
   margin-top: 2rem;
 }
 
-.event-title {
+.team-title {
   font-size: 1.2rem;
   margin-top: 1rem;
   cursor: pointer;
   color: #fffe;
 }
 
-.event-title:hover {
-  color: #ffffff;
-}
-
-.active-event-title {
+.active-team-title {
   font-weight: 900;
   color: #fff;
 }
@@ -72,18 +68,18 @@
   color: #f6396f;
 }
 
-.event-card-image {
+.team-card-image {
   height: 30px;
   width: auto;
   margin: 10px;
   filter: invert(0.9);
 }
 
-.event-card-name {
+.team-card-name {
   font-size: 2rem;
 }
 
-.event-card-description {
+.team-card-description {
   font-size: 1.2rem;
   font-family: 'Riffic Free', sans-serif;
   margin-top: auto;
@@ -93,7 +89,7 @@
   text-overflow: ellipsis;
 }
 
-.event-card-cluster {
+.team-card-cluster {
   font-family: 'Riffic Free', sans-serif;
   color: #f6396f;
 }
