@@ -246,6 +246,11 @@
   font-size: 15px;
 }
 
+.follow-us-button > a {
+  text-decoration: none;
+  color: #fff;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

@@ -43,29 +43,27 @@
 }
 
 .leader-board-wrapper {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
   display: flex;
   width: 90vw;
   justify-content: space-around;
 }
 
 .leader-board-container {
-  /* display: flex; */
-  width: 40vw;
+  width: 45%;
   position: relative;
-
-  /* flex-wrap: nowrap; */
 }
 
 .leader-board {
   width: 100%;
-
-  /* max-width: 50%; */
 }
 
-.leader-board-header, .leader-board-row {
+.leader-board-header,
+.leader-board-row {
   width: 100%;
   background-color: #262626;
-  height: 60px;  
+  height: 75px;
   padding-left: 1rem;
   display: flex;
   justify-content: space-evenly;
@@ -75,22 +73,25 @@
 
 .leader-board-row {
   background-color: black;
+
   /* height: 40px; */
-  border-bottom: solid 0.5px #666666;
+  border-bottom: solid 0.5px #666;
 }
 
-.leader-board-header > div, .leader-board-row > div{
+.leader-board-header > div,
+.leader-board-row > div {
   width: 100%;
   font-size: 1.2rem;
-  font-family: "Riffic Free"; 
+  font-family: "Riffic Free", sans-serif;
 }
 
-.leader-board-header > div:first-of-type, .leader-board-row > div:first-of-type {
+.leader-board-header > div:first-of-type,
+.leader-board-row > div:first-of-type {
   width: 250px;
 }
 
 .dept-icon {
-  background: linear-gradient(180deg, #F9A714 0%, #F36F1D 100%);
+  background: linear-gradient(180deg, #f9a714 0%, #f36f1d 100%);
   width: 30px;
   height: 30px;
   border-radius: 50%;

@@ -149,7 +149,15 @@ function SideScroller() {
             Dreaming of a better future for all?
           </p>
           <p className={styles.outroHeader2}>So are we.</p>
-          <div className={styles['follow-us-button']}>Follow Us</div>
+          <div className={styles['follow-us-button']}>
+            <a
+              href="https://www.instagram.com/nittfest"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Follow Us
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -5,55 +5,8 @@ import { BACKEND_URL } from '../../config/config';
 import styles from './style.module.css';
 import podium from './assets/podium.png';
 
-const fakeLeaderBoardData = [
-  {
-    department: 'Lorem Ipsum',
-    points: 115
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 110
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 105
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  },
-  {
-    department: 'Lorem Ipsum',
-    points: 100
-  }
-];
-
 export function Leaderboard() {
-  const [leaderBoard, setLeaderBoard] = useState(fakeLeaderBoardData);
+  const [leaderBoard, setLeaderBoard] = useState([]);
 
   useEffect(() => {
     axios.get(`${BACKEND_URL}/scores/`).then((res) => {
@@ -114,7 +67,7 @@ export function Leaderboard() {
             </div>
             <div className={styles['leader-board-body']}>
               {leaderBoard.map((l, i) => {
-                if (i < 5) return;
+                if (i < 6) return;
                 // eslint-disable-next-line consistent-return
                 return (
                   <div className={styles['leader-board-row']} key={i}>
