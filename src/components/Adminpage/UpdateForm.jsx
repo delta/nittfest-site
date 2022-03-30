@@ -5,6 +5,7 @@ import {
   Button, Form, Row, Col
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 export function UpdateForm(props) {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -13,11 +14,10 @@ export function UpdateForm(props) {
   const [depName, setDepName] = useState([]);
 
   const fetchDepartmentData = () => {
-    fetch(`${backendUrl}department/`)
-      .then((res) => res.json())
-      .then((data) => {
-        setDepName(data.departments.map((dept) => dept.name));
-      });
+    axios.get(`${backendUrl}department/`).then((response) => {
+      const { data } = response;
+      setDepName(data.departments.map((dept) => dept.name));
+    });
   };
   useEffect(() => {
     fetchDepartmentData();
@@ -25,16 +25,17 @@ export function UpdateForm(props) {
 
   const handleSubmit = () => {
     // Add authentication headers
-    fetch(`${backendUrl}events/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(eventFinalData)
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    axios
+      .post(`${backendUrl}events/`, JSON.stringify(eventFinalData), {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
