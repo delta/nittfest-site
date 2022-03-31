@@ -10,7 +10,7 @@ import axios from 'axios';
 export function UpdateForm(props) {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const jwtToken = localStorage.getItem('token');
-  const { eventData } = props;
+  const { eventData, clusterData } = props;
   const [eventFinalData, setEventFinalData] = useState(eventData);
   const [depName, setDepName] = useState([]);
 
@@ -25,14 +25,21 @@ export function UpdateForm(props) {
   }, []);
 
   const handleSubmit = () => {
-    // Add authentication headers
+    const clusterFinalData = {
+      cluster: clusterData.cluster,
+      events: eventFinalData
+    };
     axios
-      .post(`${backendUrl}events/`, JSON.stringify(eventFinalData), {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwtToken}`
+      .post(
+        `${backendUrl}events/event_update/`,
+        JSON.stringify(clusterFinalData),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer TEST_JWT=${jwtToken}`
+          }
         }
-      })
+      )
       .then((response) => {
         console.log(response);
       })
@@ -176,7 +183,21 @@ export function UpdateForm(props) {
 
         <Form.Group as={Col} controlId="formGridDepartment">
           <Form.Label>Department</Form.Label>
-          <Form.Select defaultValue="Choose...">
+          <Form.Select
+            defaultValue="Choose..."
+            onChange={(event) => {
+              setEventFinalData({
+                ...eventFinalData,
+                points: {
+                  ...eventFinalData.points,
+                  0: {
+                    ...eventFinalData.points[0],
+                    department: event.target.value
+                  }
+                }
+              });
+            }}
+          >
             {depName.map((name) => (
               <option>{name}</option>
             ))}
@@ -192,8 +213,8 @@ export function UpdateForm(props) {
                 ...eventFinalData,
                 points: {
                   ...eventFinalData.points,
-                  0: {
-                    ...eventFinalData.points[0],
+                  1: {
+                    ...eventFinalData.points[1],
                     point: event.target.value
                   }
                 }
@@ -213,7 +234,21 @@ export function UpdateForm(props) {
 
         <Form.Group as={Col} controlId="formGridDepartment">
           <Form.Label>Departments</Form.Label>
-          <Form.Select defaultValue="Choose...">
+          <Form.Select
+            defaultValue="Choose..."
+            onChange={(event) => {
+              setEventFinalData({
+                ...eventFinalData,
+                points: {
+                  ...eventFinalData.points,
+                  1: {
+                    ...eventFinalData.points[1],
+                    department: event.target.value
+                  }
+                }
+              });
+            }}
+          >
             {depName.map((name) => (
               <option>{name}</option>
             ))}
@@ -250,7 +285,21 @@ export function UpdateForm(props) {
 
         <Form.Group as={Col} controlId="formGridDepartment">
           <Form.Label>Department</Form.Label>
-          <Form.Select defaultValue="Choose...">
+          <Form.Select
+            defaultValue="Choose..."
+            onChange={(event) => {
+              setEventFinalData({
+                ...eventFinalData,
+                points: {
+                  ...eventFinalData.points,
+                  2: {
+                    ...eventFinalData.points[2],
+                    department: event.target.value
+                  }
+                }
+              });
+            }}
+          >
             {depName.map((name) => (
               <option>{name}</option>
             ))}
@@ -302,5 +351,6 @@ UpdateForm.propTypes = {
         department: PropTypes.string
       })
     )
-  }).isRequired
+  }).isRequired,
+  clusterData: PropTypes.string.isRequired
 };

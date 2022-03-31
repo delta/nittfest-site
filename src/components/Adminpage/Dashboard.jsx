@@ -11,9 +11,10 @@ export function Dashboard() {
   const [clusters, setClusters] = useState([]);
   const [show, setShow] = useState(false);
   const [eventData, setEventData] = useState({});
+  const [currentClusterData, setCurrentClusterData] = useState({});
 
   const handleClose = () => setShow(false);
-  const handleShow = (event) => {
+  const handleShow = (event, clusterName) => {
     const tmpEventData = {
       name: event.name,
       is_reg_completed: event.is_reg_completed,
@@ -28,6 +29,7 @@ export function Dashboard() {
       points: event.points
     };
     setEventData(tmpEventData);
+    setCurrentClusterData({ cluster: clusterName.cluster, tmpEventData });
     setShow(true);
   };
 
@@ -54,7 +56,7 @@ export function Dashboard() {
             <Modal.Title>Update Event</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <UpdateForm eventData={eventData} />
+            <UpdateForm eventData={eventData} clusterData={currentClusterData} />
           </Modal.Body>
         </Modal>
         {isLoading ? (
@@ -83,7 +85,7 @@ export function Dashboard() {
                                 <Button
                                   variant="primary"
                                   onClick={() => {
-                                    handleShow(event);
+                                    handleShow(event, cluster);
                                   }}
                                 >
                                   Update the event
