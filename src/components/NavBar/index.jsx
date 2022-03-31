@@ -17,17 +17,22 @@ const routes = [
   {
     name: 'Leaderboard',
     url: '/leaderboard'
-  },
-  {
-    name: 'Team',
-    url: '/team'
-  }
+  } // ,
+  // {
+  //   name: 'Team',
+  //   url: '/team'
+  // }
 ];
 
 export function NavBar() {
   const location = useLocation();
   return (
-    <Navbar collapseOnSelect expand="md" variant="dark">
+    <Navbar
+      className={styles.navbar}
+      collapseOnSelect
+      expand="md"
+      variant="dark"
+    >
       <Container>
         <Navbar.Brand href="/">
           <img
@@ -46,8 +51,11 @@ export function NavBar() {
                 <Link
                   key={`${route.url}`}
                   to={`${route.url}`}
-                  style={location.pathname.toLowerCase() === route.url.toLowerCase()
-                    ? { color: '#f58719' } : { color: '#fff' }}
+                  style={
+                    location.pathname.toLowerCase() === route.url.toLowerCase()
+                      ? { color: '#f58719' }
+                      : { color: '#fff' }
+                  }
                   className={`${styles.linked} nav-link`}
                 >
                   {route.name.toUpperCase()}
@@ -55,7 +63,9 @@ export function NavBar() {
               ))}
             </Nav>
           </Container>
-          <Button variant="outline-primary" className={styles.orange}>Register</Button>
+          <Button variant="outline-primary" className={styles.orange}>
+            Register
+          </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
