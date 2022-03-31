@@ -31,7 +31,7 @@ export function UpdateForm(props) {
     };
     axios
       .post(
-        `${backendUrl}events/event_update/`,
+        `${backendUrl}update/`,
         JSON.stringify(clusterFinalData),
         {
           headers: {
