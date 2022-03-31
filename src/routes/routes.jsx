@@ -12,13 +12,12 @@ export const publicRoutes = [
     url: '/leaderboard',
     component: LeaderboardContainer,
     name: 'LeaderboardContainer'
-  }
-];
-
-export const adminRoutes = [
+  },
   {
     url: '/admin',
     component: AdminContainer,
     name: 'AdminContainer'
   }
 ];
+
+export const adminRoutes = [];

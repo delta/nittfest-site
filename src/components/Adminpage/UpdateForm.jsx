@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export function UpdateForm(props) {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const jwtToken = process.env.REACT_APP_TEST_JWT;
+  const jwtToken = localStorage.getItem('token');
   const { eventData } = props;
   const [eventFinalData, setEventFinalData] = useState(eventData);
   const [depName, setDepName] = useState([]);
