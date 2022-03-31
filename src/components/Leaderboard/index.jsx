@@ -42,18 +42,20 @@ export function Leaderboard() {
             </div>
             <div className={styles['leader-board-body']}>
               {leaderBoard.map((l, i) => {
-                if (i > 5) return;
-                // eslint-disable-next-line consistent-return
-                return (
-                  <div className={styles['leader-board-row']} key={i}>
-                    <div>{i + 1}</div>
-                    <div>
-                      <span className={styles['dept-icon']} />
-                      {l.department}
-                    </div>
-                    <div>{l.points || '105'}</div>
-                  </div>
-                );
+                if (i > leaderBoard.length / 2) return;
+								// eslint-disable-next-line consistent-return
+								return (
+									<div className={styles["leader-board-row"]} key={i}>
+										<div>{i + 1}</div>
+										<div>
+											<span className={styles["dept-icon"]} />
+											{l.department}
+										</div>
+										<div>
+											{l.total_points !== undefined ? l.total_points : "-"}
+										</div>
+									</div>
+								);
               })}
             </div>
           </div>
@@ -67,18 +69,18 @@ export function Leaderboard() {
             </div>
             <div className={styles['leader-board-body']}>
               {leaderBoard.map((l, i) => {
-                if (i < 6) return;
-                // eslint-disable-next-line consistent-return
-                return (
-                  <div className={styles['leader-board-row']} key={i}>
-                    <div>{i + 1}</div>
-                    <div>
-                      <span className={styles['dept-icon']} />
-                      {l.department}
-                    </div>
-                    <div>{l.points || '105'}</div>
-                  </div>
-                );
+                if (i < leaderBoard.length / 2) return;
+								// eslint-disable-next-line consistent-return
+								return (
+									<div className={styles["leader-board-row"]} key={i}>
+										<div>{i + 1}</div>
+										<div>
+											<span className={styles["dept-icon"]} />
+											{l.department}
+										</div>
+										<div>{l.total_points !== undefined || "-"}</div>
+									</div>
+								);
               })}
             </div>
           </div>
