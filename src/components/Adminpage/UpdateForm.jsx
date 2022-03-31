@@ -27,7 +27,7 @@ export function UpdateForm(props) {
   const handleSubmit = () => {
     const clusterFinalData = {
       cluster: clusterData.cluster,
-      events: eventFinalData
+      events: [eventFinalData].flat()
     };
     axios
       .post(
@@ -36,7 +36,7 @@ export function UpdateForm(props) {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer TEST_JWT=${jwtToken}`
+            Authorization: `Bearer ${jwtToken}`
           }
         }
       )
@@ -173,158 +173,50 @@ export function UpdateForm(props) {
         </Form.Group>
       </Row>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridPosition">
-          <Form.Label>Position</Form.Label>
-          <Form.Select defaultValue="1">
-            <option>1</option>
-          </Form.Select>
-        </Form.Group>
+      {eventFinalData.points.map((point, index) => (
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridPosition">
+            <Form.Label>Position</Form.Label>
+            <Form.Select>
+              <option>{point.position}</option>
+            </Form.Select>
+          </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridDepartment">
-          <Form.Label>Department</Form.Label>
-          <Form.Select
-            defaultValue="Choose..."
-            onChange={(event) => {
-              setEventFinalData({
-                ...eventFinalData,
-                points: {
-                  ...eventFinalData.points,
-                  0: {
-                    ...eventFinalData.points[0],
-                    department: event.target.value
-                  }
-                }
-              });
-            }}
-          >
-            {depName.map((name) => (
-              <option>{name}</option>
-            ))}
-          </Form.Select>
-        </Form.Group>
+          <Form.Group as={Col} controlId="formGridDepartment">
+            <Form.Label>Department</Form.Label>
+            <Form.Select
+              defaultValue={point.department}
+              onChange={(event) => {
+                const tmpPoints = eventFinalData.points;
+                tmpPoints[index].department = event.target.value;
+                setEventFinalData({
+                  ...eventFinalData,
+                  points: [tmpPoints].flat()
+                });
+              }}
+            >
+              {depName.map((name) => (
+                <option>{name}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridPoint">
-          <Form.Label>Point</Form.Label>
-          <Form.Control
-            value={eventFinalData.points[0].point}
-            onChange={(event) => {
-              setEventFinalData({
-                ...eventFinalData,
-                points: {
-                  ...eventFinalData.points,
-                  1: {
-                    ...eventFinalData.points[1],
-                    point: event.target.value
-                  }
-                }
-              });
-            }}
-          />
-        </Form.Group>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridPosition">
-          <Form.Label>Position</Form.Label>
-          <Form.Select defaultValue="2">
-            <option>2</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridDepartment">
-          <Form.Label>Departments</Form.Label>
-          <Form.Select
-            defaultValue="Choose..."
-            onChange={(event) => {
-              setEventFinalData({
-                ...eventFinalData,
-                points: {
-                  ...eventFinalData.points,
-                  1: {
-                    ...eventFinalData.points[1],
-                    department: event.target.value
-                  }
-                }
-              });
-            }}
-          >
-            {depName.map((name) => (
-              <option>{name}</option>
-            ))}
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridPoint">
-          <Form.Label>Point</Form.Label>
-          <Form.Control
-            value={eventFinalData.points[1].point}
-            onChange={(event) => {
-              setEventFinalData({
-                ...eventFinalData,
-                points: {
-                  ...eventFinalData.points,
-                  1: {
-                    ...eventFinalData.points[1],
-                    point: event.target.value
-                  }
-                }
-              });
-            }}
-          />
-        </Form.Group>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridPosition">
-          <Form.Label>Position</Form.Label>
-          <Form.Select defaultValue="3">
-            <option>3</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridDepartment">
-          <Form.Label>Department</Form.Label>
-          <Form.Select
-            defaultValue="Choose..."
-            onChange={(event) => {
-              setEventFinalData({
-                ...eventFinalData,
-                points: {
-                  ...eventFinalData.points,
-                  2: {
-                    ...eventFinalData.points[2],
-                    department: event.target.value
-                  }
-                }
-              });
-            }}
-          >
-            {depName.map((name) => (
-              <option>{name}</option>
-            ))}
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridPoint">
-          <Form.Label>Point</Form.Label>
-          <Form.Control
-            value={eventFinalData.points[2].point}
-            onChange={(event) => {
-              setEventFinalData({
-                ...eventFinalData,
-                points: {
-                  ...eventFinalData.points,
-                  2: {
-                    ...eventFinalData.points[2],
-                    point: event.target.value
-                  }
-                }
-              });
-            }}
-          />
-        </Form.Group>
-      </Row>
+          <Form.Group as={Col} controlId="formGridPoint">
+            <Form.Label>Point</Form.Label>
+            <Form.Control
+              value={point.point}
+              onChange={(event) => {
+                const tmpPoints = eventFinalData.points;
+                tmpPoints[index].point = event.target.value;
+                setEventFinalData({
+                  ...eventFinalData,
+                  points: [tmpPoints].flat()
+                });
+              }}
+            />
+          </Form.Group>
+        </Row>
+      ))}
 
       <Button variant="primary" onClick={handleSubmit}>
         {`Update ${eventFinalData.name} Event`}
@@ -352,5 +244,26 @@ UpdateForm.propTypes = {
       })
     )
   }).isRequired,
-  clusterData: PropTypes.string.isRequired
+  clusterData: PropTypes.shape({
+    cluster: PropTypes.string,
+    event: PropTypes.shape({
+      name: PropTypes.string,
+      is_reg_completed: PropTypes.bool,
+      is_event_completed: PropTypes.bool,
+      rules: PropTypes.string,
+      description: PropTypes.string,
+      form_link: PropTypes.string,
+      event_link: PropTypes.string,
+      image_link: PropTypes.string,
+      start_time: PropTypes.string,
+      end_time: PropTypes.string,
+      points: PropTypes.arrayOf(
+        PropTypes.shape({
+          point: PropTypes.number,
+          position: PropTypes.number,
+          department: PropTypes.string
+        })
+      )
+    })
+  }).isRequired
 };
