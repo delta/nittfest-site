@@ -19,7 +19,8 @@ export const publicRoutes = [
     url: '/admin',
     component: AdminContainer,
     name: 'AdminContainer'
-  }
+  },
+  {
     url: '/events',
     component: EventPageContainer,
     name: 'EventPageContainer'
