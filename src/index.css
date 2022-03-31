@@ -9,6 +9,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+#root {
+  position: relative;
+}
+
 h1 {
   font-family: "Riffic Free", cursive;
   font-weight: 700;

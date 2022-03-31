@@ -1,3 +1,9 @@
+.navbar {
+  position: relative;
+  z-index: 1000;
+  background: #0008;
+}
+
 .orange {
   color: #f58719;
   border-color: #f58719;

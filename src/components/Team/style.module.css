@@ -1,0 +1,95 @@
+.team-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.header-section {
+  width: 100%;
+  max-width: 25%;
+  padding: 4rem;
+}
+
+.team-section {
+  width: 100%;
+  max-width: 75%;
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.team-card {
+  width: 100%;
+  background-color: #262626;
+  max-width: 400px;
+  height: 275px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem;
+  padding-top: 1rem;
+  margin: 1rem;
+}
+
+.team-titles {
+  margin-top: 2rem;
+}
+
+.team-title {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  color: #fffe;
+}
+
+.active-team-title {
+  font-weight: 900;
+  color: #fff;
+}
+
+.sub-header-1 {
+  font-family: "Riffic Free", sans-serif;
+  font-size: 1.5rem;
+}
+
+.sub-header-2 {
+  font-size: 1.3rem;
+}
+
+.header-content {
+  font-size: 1.3rem;
+}
+
+.main-header {
+  font-family: "Riffic Free", sans-serif;
+  font-size: 6rem;
+  color: #f6396f;
+}
+
+.team-card-image {
+  height: 30px;
+  width: auto;
+  margin: 10px;
+  filter: invert(0.9);
+}
+
+.team-card-name {
+  font-size: 2rem;
+}
+
+.team-card-description {
+  font-size: 1.2rem;
+  font-family: "Riffic Free", sans-serif;
+  margin-top: auto;
+  max-height: 70px;
+  overflow-y: auto;
+  height: 100%;
+  text-overflow: ellipsis;
+}
+
+.team-card-cluster {
+  font-family: "Riffic Free", sans-serif;
+  color: #f6396f;
+}
