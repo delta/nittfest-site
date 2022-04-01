@@ -28,7 +28,7 @@ export function Adminpage() {
       );
       if (resp.data.isAuthorized === 'True') {
         localStorage.setItem('token', resp.data.jwt_token);
-        setIsSignedIn(false);
+        setIsSignedIn(true);
         setIsWrong(false);
       } else {
         setIsWrong(true);
