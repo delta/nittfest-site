@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Navbar, Container, Nav, Button
+  Navbar, Container, Nav
 } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './style.module.css';
@@ -63,9 +63,6 @@ export function NavBar() {
               ))}
             </Nav>
           </Container>
-          <Button variant="outline-primary" className={styles.orange}>
-            Register
-          </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -21,6 +21,12 @@
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
+    <script>
+      if (window.innerHeight < 768 || window.innerWidth < 768) {
+        window.location.href =
+          "https://play.google.com/store/apps/details?id=org.nittfest.app";
+      }
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
