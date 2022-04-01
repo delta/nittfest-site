@@ -1,5 +1,6 @@
 import { HomePageContainer } from '../containers/HomePageContainer';
 import { LeaderboardContainer } from '../containers/LeaderboardContainer';
+import { AdminContainer } from '../containers/AdminContainer';
 import { EventPageContainer } from '../containers/EventPageContainer';
 // import { TeamPageContainer } from '../containers/TeamPageContainer';
 
@@ -13,6 +14,11 @@ export const publicRoutes = [
     url: '/leaderboard',
     component: LeaderboardContainer,
     name: 'LeaderboardContainer'
+  },
+  {
+    url: '/admin',
+    component: AdminContainer,
+    name: 'AdminContainer'
   },
   {
     url: '/events',
