@@ -1,10 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Switch, Route, Redirect
+} from 'react-router-dom';
 import { publicRoutes, adminRoutes } from './routes';
 import { ScrollToTopController } from '../components/ScrollToTopController';
 import { Footer } from '../components/Footer';
 import { NavBar } from '../components/NavBar';
 // import { Page404 } from "../components/Page404";
+
+function HomeRedirect() {
+  return (
+    <Redirect to="/" />
+  );
+}
 
 export function Routes() {
   return (
@@ -31,7 +39,7 @@ export function Routes() {
             />
           ))
         }
-        {/* <Route component={Page404} /> */}
+        <Route component={HomeRedirect} />
       </Switch>
       <Footer />
     </Router>
