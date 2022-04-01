@@ -32,7 +32,7 @@ export function UpdateForm(props) {
       events: [eventFinalData].flat()
     };
     axios
-      .post(`${backendUrl}/events/update/`, JSON.stringify(clusterFinalData), {
+      .post(`${backendUrl}/events/update`, JSON.stringify(clusterFinalData), {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${jwtToken}`

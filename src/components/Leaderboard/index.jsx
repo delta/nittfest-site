@@ -11,7 +11,13 @@ export function Leaderboard() {
   useEffect(() => {
     axios.get(`${BACKEND_URL}/scores/`).then((res) => {
       // eslint-disable-next-line no-console
-      console.log(res.data, leaderBoard);
+      // console.log(res.data, leaderBoard);
+      res.data.sort((a, b) => {
+        if (a.total_points > b.total_points) {
+          return -1;
+        }
+        return 1;
+      });
       setLeaderBoard(res.data);
     });
   }, []);
@@ -42,7 +48,7 @@ export function Leaderboard() {
             </div>
             <div className={styles['leader-board-body']}>
               {leaderBoard.map((l, i) => {
-                if (i > leaderBoard.length / 2) return;
+                if (i >= leaderBoard.length / 2) return;
                 // eslint-disable-next-line consistent-return
                 return (
                   <div className={styles['leader-board-row']} key={i}>
