@@ -78,7 +78,7 @@ export function Leaderboard() {
                       <span className={styles['dept-icon']} />
                       {l.department}
                     </div>
-                    <div>{l.total_points !== undefined || '-'}</div>
+                    <div>{l.total_points !== undefined ? l.total_points : '-'}</div>
                   </div>
                 );
               })}
