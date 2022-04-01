@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { React, useState, useEffect } from 'react';
 import 'react-datetime/css/react-datetime.css';
 import Datetime from 'react-datetime';
@@ -6,16 +7,17 @@ import {
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { BACKEND_URL } from '../../config/config';
 
 export function UpdateForm(props) {
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = BACKEND_URL;
   const jwtToken = localStorage.getItem('token');
   const { eventData, clusterData } = props;
   const [eventFinalData, setEventFinalData] = useState(eventData);
   const [depName, setDepName] = useState([]);
 
   const fetchDepartmentData = () => {
-    axios.get(`${backendUrl}department/`).then((response) => {
+    axios.get(`${backendUrl}/department/`).then((response) => {
       const { data } = response;
       setDepName(data.departments.map((dept) => dept.name));
     });
@@ -30,16 +32,12 @@ export function UpdateForm(props) {
       events: [eventFinalData].flat()
     };
     axios
-      .post(
-        `${backendUrl}events/update/`,
-        JSON.stringify(clusterFinalData),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${jwtToken}`
-          }
+      .post(`${backendUrl}/events/update/`, JSON.stringify(clusterFinalData), {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwtToken}`
         }
-      )
+      })
       .then((response) => {
         console.log(response);
       })
@@ -174,7 +172,7 @@ export function UpdateForm(props) {
       </Row>
 
       {eventFinalData.points.map((point, index) => (
-        <Row className="mb-3">
+        <Row className="mb-3" key={index}>
           <Form.Group as={Col} controlId="formGridPosition">
             <Form.Label>Position</Form.Label>
             <Form.Select>
@@ -196,7 +194,9 @@ export function UpdateForm(props) {
               }}
             >
               {depName.map((name) => (
-                <option>{name}</option>
+                <option value={name} key={name}>
+                  {name}
+                </option>
               ))}
             </Form.Select>
           </Form.Group>

@@ -2,36 +2,40 @@ import { React, useState, useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { Dashboard } from './Dashboard';
+import { BACKEND_URL } from '../../config/config';
 
 export function Adminpage() {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [rollno, setRollNo] = useState();
-  const [pass, setPass] = useState();
+  const [rollno, setRollNo] = useState('');
+  const [pass, setPass] = useState('');
   const [isWrong, setIsWrong] = useState(false);
   const jwtToken = localStorage.getItem('token');
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  if (!isSignedIn && jwtToken != null) setIsSignedIn(true);
+  const backendUrl = BACKEND_URL;
+
   useEffect(() => {
+    if (!isSignedIn && jwtToken != null) setIsSignedIn(true);
   }, [isSignedIn]);
   async function loginUser(credentials) {
-    return axios
-      .post(`${backendUrl}admin/`, JSON.stringify(credentials), {
-        headers: {
-          'Content-Type': 'application/json'
+    try {
+      const resp = await axios.post(
+        `${backendUrl}/admin/`,
+        JSON.stringify(credentials),
+        {
+          headers: {
+            'content-type': 'application/json'
+          }
         }
-      })
-      .then((response) => {
-        if (response.data.isAuthorized === 'True') {
-          localStorage.setItem('token', response.data.jwt_token);
-          setIsSignedIn(false);
-          setIsWrong(false);
-        } else {
-          setIsWrong(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      );
+      if (resp.data.isAuthorized === 'True') {
+        localStorage.setItem('token', resp.data.jwt_token);
+        setIsSignedIn(false);
+        setIsWrong(false);
+      } else {
+        setIsWrong(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +69,7 @@ export function Adminpage() {
                 value={rollno}
                 type="text"
                 onChange={(e) => setRollNo(e.target.value)}
+                id="username"
               />
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -72,6 +77,7 @@ export function Adminpage() {
                 value={pass}
                 type="password"
                 onChange={(e) => setPass(e.target.value)}
+                id="password"
               />
               {showIsWrongText()}
               <Button variant="primary" onClick={handleSubmit}>
