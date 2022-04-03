@@ -5,6 +5,7 @@ import Datetime from 'react-datetime';
 import {
   Button, Form, Row, Col
 } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { BACKEND_URL } from '../../config/config';
@@ -40,6 +41,15 @@ export function UpdateForm(props) {
       })
       .then((response) => {
         console.log(response);
+        toast.success('Event updated successfully', {
+          position: 'bottom-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        });
       })
       .catch((error) => {
         console.log(error);
