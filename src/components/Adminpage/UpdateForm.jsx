@@ -53,7 +53,7 @@ export function UpdateForm(props) {
       })
       .catch((error) => {
         console.log(error);
-        toast.error('Error updating evetn', {
+        toast.error('Error updating event', {
           position: 'bottom-right',
           autoClose: 2000,
           hideProgressBar: false,
