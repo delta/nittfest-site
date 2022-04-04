@@ -53,6 +53,15 @@ export function UpdateForm(props) {
       })
       .catch((error) => {
         console.log(error);
+        toast.error('Error updating evetn', {
+          position: 'bottom-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        });
       });
   };
 
